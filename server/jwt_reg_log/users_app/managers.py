@@ -3,13 +3,13 @@ from django.contrib.auth.base_user import BaseUserManager
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, username=None, email=None, phone=None, password=None, **extra_fields):
+    def _create_user(self, username=None, email=None, password=None, **extra_fields):
         """
         Creates and saves a User with the given email and password.
         """
         if not username:
-            if not email and not phone:
-                raise ValueError('The given email/phone must be set')
+            if not email:
+                raise ValueError('The given email must be set')
 
         if email:
             email = self.normalize_email(email)
@@ -23,15 +23,6 @@ class UserManager(BaseUserManager):
                 **extra_fields
             )
 
-        if phone:
-            if not username:
-                username = phone
-
-            user = self.model(
-                username=username,
-                phone=phone,
-                **extra_fields
-            )
         
         # проверяем является ли пользователь
         # суперпользователем

@@ -17,7 +17,7 @@ class AuthBackend(object):
 
         try:
             user = User.objects.get(
-                Q(username=username) | Q(email=username) | Q(phone=username)
+                Q(username=username) | Q(email=username)
             )
 
         except User.DoesNotExist:

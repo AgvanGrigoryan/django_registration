@@ -160,7 +160,8 @@ DJOSER = {
     'SET_PASSWORD_RETYPE': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'TOKEN_MODEL': None,  # We use only JWT
-    'ACTIVATION_URL': 'auth/verify/{uid}/{token}/',
+    'ACTIVATION_URL': 'auth/activate/{uid}/{token}/',
+    'LOGOUT_ON_PASSWORD_CHANGE': True,
 }
 
 # EMAIL
